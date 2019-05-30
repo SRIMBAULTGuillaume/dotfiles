@@ -1,0 +1,11 @@
+#!/bin/bash
+
+## Created By Aditya Shakya
+
+MENU="$(rofi -sep "|" -dmenu -i -p 'System' -location 3 -yoffset 60 -xoffset -28 -width 15 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 -font "Fantasque Sans Mono 11" -theme Monokai -kb-select-1 "l" -kb-select-2 "d" -kb-select-3 "r" -kb-select-4 "s" <<< " Lock| Disconnect| Reboot| Shutdown")"
+            case "$MENU" in
+                *Lock*) ~/.config/i3lock/lockscreen.sh ;;
+                *Logout*) openbox --exit;;
+                *Reboot*) systemctl reboot ;;
+                *Shutdown*) systemctl -i poweroff
+esac

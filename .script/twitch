@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ $2 ]
+then
+    streamlink twitch.tv/$1 $2
+else 
+    streamlink twitch.tv/$1 best
+fi

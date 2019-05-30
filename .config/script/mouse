@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+sensiG502=2.2
+
+for l in $(xinput list | grep G502 | grep pointer | cut -d '=' -f 2 | cut -d$'\t' -f 1)
+do
+    xinput --set-prop $l 144 $sensiG502, 0, 0, 0, $sensiG502, 0, 0, 0, 1
+    xinput --set-prop $l 289 -1
+done
+
+for l in $(xinput list | grep "pointer" | grep -v G502 | grep -v Logitech | cut -d '=' -f 2 | cut -d$'\t' -f 1)
+do
+    # xinput set-prop $l 289 -78 -78
+    xinput set-prop $l "libinput Natural Scrolling Enabled" 1
+    xinput set-prop $l "Coordinates Transformation Matrix"  296 0 0 0 0 1 0 0
+    xinput set-prop $l "libinput Tapping Enabled"  1
+done
